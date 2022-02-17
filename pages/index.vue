@@ -1,9 +1,9 @@
 <template>
   <div class="w-full">
-    <section class="min-h-screen py-4 bg-blue-100">
+    <section class="min-h-screen py-4 px-5 bg-blue-100">
       <h2 class="text-4xl text-center">ABOUT</h2>
     </section>
-    <section class="min-h-screen py-4">
+    <section class="min-h-screen py-4 px-5">
       <h2 class="text-4xl text-center">WORK</h2>
       <div class="flex flex-row flex-wrap">
         <div
@@ -37,8 +37,18 @@
         </div>
       </div>
     </section>
-    <section class="min-h-screen py-4 bg-blue-100">
+    <section class="min-h-screen py-4 px-5 bg-blue-100">
       <h2 class="text-4xl text-center">SKILL</h2>
+      <div class="flex flex-row flex-wrap">
+        <SkillBar
+          title="フロントエンド"
+          :skills="frontendSkills.contents"
+        ></SkillBar>
+        <SkillBar
+          title="バックエンド"
+          :skills="backendSkills.contents"
+        ></SkillBar>
+      </div>
     </section>
   </div>
 </template>
@@ -50,8 +60,24 @@ export default {
       endpoint: "works",
       queries: { orders: "publishedAt" },
     })
+    const frontendSkills = await $microcms.get({
+      endpoint: "skills",
+      queries: {
+        filters: "category[contains]フロントエンド",
+        orders: "createdAt",
+      },
+    })
+    const backendSkills = await $microcms.get({
+      endpoint: "skills",
+      queries: {
+        filters: "category[contains]バックエンド",
+        orders: "createdAt",
+      },
+    })
     return {
       works,
+      frontendSkills,
+      backendSkills,
     }
   },
 }
