@@ -19,7 +19,7 @@
       <span
         v-for="s in skills"
         :key="s"
-        class="inline-block bg-yellow-100 rounded-full mx-1 px-3 py-1 text-sm font-semibold text-yellow-500"
+        class="inline-block bg-yellow-100 rounded-full mx-1 px-2 py-1 mb-2 text-xs font-semibold text-yellow-500"
         >{{ s }}</span
       >
     </div>
@@ -55,7 +55,7 @@ export default {
 
 <style scoped>
 .card:hover .card-image img {
-  @apply scale-110;
+  transform: scale(1.1);
 }
 .card .card-image::after {
   content: "Read More";
