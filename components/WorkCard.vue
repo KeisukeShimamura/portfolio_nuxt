@@ -1,5 +1,7 @@
 <template>
-  <div class="card">
+  <div
+    class="card max-w-lg rounded-md overflow-hidden shadow-lg mb-4 bg-white cursor-pointer"
+  >
     <div class="card-image overflow-hidden w-full h-64 relative">
       <img
         class="w-full h-64 object-cover transition duration-300"
@@ -52,9 +54,6 @@ export default {
 </script>
 
 <style scoped>
-.card {
-  @apply max-w-lg rounded-md overflow-hidden shadow-lg mb-4 bg-white cursor-pointer;
-}
 .card:hover .card-image img {
   @apply scale-110;
 }
